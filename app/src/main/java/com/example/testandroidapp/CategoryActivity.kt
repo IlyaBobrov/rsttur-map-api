@@ -1,6 +1,7 @@
 package com.example.testandroidapp
 
 import android.app.Dialog
+import android.app.ProgressDialog
 import android.os.Bundle
 import android.util.Log
 import android.widget.Toast
@@ -28,6 +29,8 @@ class CategoryActivity : AppCompatActivity() {
     lateinit var dialog: Dialog
     private lateinit var recyclerCategoryList: RecyclerView
 
+    var myResponse: Example? = null
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_category)
@@ -40,19 +43,20 @@ class CategoryActivity : AppCompatActivity() {
 
         recyclerCategoryList.layoutManager = layoutManager
 
-        dialog = SpotsDialog.Builder().setCancelable(true).setContext(this).build() as SpotsDialog
+        //dialog = SpotsDialog.Builder().setCancelable(true).setContext(this).build() as SpotsDialog
 
         getExample()
     }
 
     private fun getExample() {
-        dialog.show()
+        dialog = ProgressDialog.show(this, "", "Loading...", true)
+        //dialog.show()
 
         apiInterface.getExample().enqueue(object : Callback<Example> {
 
             override fun onResponse(call: Call<Example>, response: Response<Example>) {
 
-                //~~~start Logs debug~~~
+                /*//~~~start Logs debug~~~
                 Log.i(TAG, "response ${response.body()?.success.toString()}")
 
                 Log.d(TAG, "1! (name id 1): ${response.body()?.data?.categories?.get(1)?.name}")
@@ -70,11 +74,14 @@ class CategoryActivity : AppCompatActivity() {
                 Log.d(TAG, "true! geo lon: ${response.body()?.data?.geo?.lon}")
 
                 Log.d(TAG, "to be! objects id 0: ${response.body()?.data?.objects?.get(0)}")
-                //~~~end Logs debug~~~
+                //~~~end Logs debug~~~*/
 
-                val myResponse: Example? = response.body()
+                Log.d(TAG, "response: ${response}")
+
+                myResponse = response.body()
                 val myMutableList: MutableList<Category> =
                     myResponse?.data?.categories as MutableList<Category>
+
                 Log.d(TAG, "myMutableList (size): ${myMutableList.size}")
 
                 adapter = MyCategoryAdapter(baseContext, myMutableList)

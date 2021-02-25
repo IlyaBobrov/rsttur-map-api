@@ -1,6 +1,8 @@
 package com.example.testandroidapp.Adapter
 
 import android.content.Context
+import android.content.Intent
+import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -8,14 +10,19 @@ import android.widget.ImageView
 import android.widget.TextView
 import android.widget.Toast
 import androidx.constraintlayout.widget.ConstraintLayout
+import androidx.core.content.ContextCompat.startActivity
 import androidx.recyclerview.widget.RecyclerView
 import com.example.testandroidapp.Api.Model.Category
+import com.example.testandroidapp.Api.Model.Example
+import com.example.testandroidapp.CategoryActivity
+import com.example.testandroidapp.Network.ObjectsActivity
+import com.example.testandroidapp.Network.myObject
 import com.example.testandroidapp.R
 import com.squareup.picasso.Picasso
 
 class MyCategoryAdapter(
     private val context: Context,
-    private val categoryList: MutableList<Category>
+    private val categoryList: MutableList<Category>,
 ) :
     RecyclerView.Adapter<MyCategoryAdapter.MyViewHolderCategory>() {
 
@@ -26,9 +33,13 @@ class MyCategoryAdapter(
         val color: ImageView = myItemView.findViewById(R.id.color_category)
         val count: TextView = myItemView.findViewById(R.id.txt_count_category)
 
-        fun myBind(listItem: Category) {
+        fun bindCategory(listItem: Category) {
             item.setOnClickListener { v: View ->
-                Toast.makeText(v.context, "${listItem.type}", Toast.LENGTH_LONG).show()
+                //Toast.makeText(v.context, "${listItem.type}", Toast.LENGTH_LONG).show()
+                var intent: Intent = Intent(v.context, ObjectsActivity::class.java)
+                intent.putExtra("TYPE", "${listItem.type}")
+//                intent.putExtra("RESPONSE", "${response}")
+                startActivity(v.context, intent, Bundle.EMPTY)
             }
         }
     }
@@ -44,7 +55,7 @@ class MyCategoryAdapter(
 
     override fun onBindViewHolder(holder: MyViewHolderCategory, position: Int) {
         val listItem = categoryList[position]
-        holder.myBind(listItem)
+        holder.bindCategory(listItem)
 
         Picasso.get().load(categoryList[position].icon).into(holder.icon)
         Picasso.get().load(categoryList[position].color).into(holder.color)

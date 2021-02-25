@@ -4,7 +4,7 @@ import com.google.gson.annotations.Expose
 import com.google.gson.annotations.SerializedName
 
 
-class Objects {
+class Object {
     @SerializedName("id")
     @Expose
     var id: Int? = null

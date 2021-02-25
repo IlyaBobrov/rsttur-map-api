@@ -72,9 +72,10 @@ class CategoryActivity : AppCompatActivity() {
 
                 Log.d(TAG, "true! geo lat: ${response.body()?.data?.geo?.lat}")
                 Log.d(TAG, "true! geo lon: ${response.body()?.data?.geo?.lon}")
-
-                Log.d(TAG, "to be! objects id 0: ${response.body()?.data?.objects?.get(0)}")
                 //~~~end Logs debug~~~*/
+
+                Log.d(TAG, "0.1 to be! objects id 0: ${response.body()?.data?.objects?.get(0)}")
+                Log.d(TAG, "0.2 to be! objects id 0: ${response.body()?.data?.objects?.get(0).hashCode()}")
 
                 Log.d(TAG, "response: ${response}")
 
@@ -88,16 +89,19 @@ class CategoryActivity : AppCompatActivity() {
                 adapter.notifyDataSetChanged()
                 recyclerCategoryList.adapter = adapter
 
+//                call.cancel()
                 dialog.dismiss()
+
             }
 
             override fun onFailure(call: Call<Example>, t: Throwable) {
                 Log.e(TAG, "error: $t")
                 Log.e(TAG, "call: $call")
                 Toast.makeText(this@CategoryActivity, "Error: $t", Toast.LENGTH_LONG).show()
+//                call.cancel()
             }
         })
 
-    }
 
+    }
 }

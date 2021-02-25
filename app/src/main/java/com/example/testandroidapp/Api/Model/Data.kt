@@ -14,5 +14,5 @@ class Data {
 
     @SerializedName("objects")
     @Expose
-    var objects: List<Any>? = null
+    var objects: List<Object>? = null
 }

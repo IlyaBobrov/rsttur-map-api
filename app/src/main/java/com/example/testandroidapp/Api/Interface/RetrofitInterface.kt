@@ -7,8 +7,8 @@ import retrofit2.http.GET
 
 interface RetrofitInterface {
 
-    @GET("map")
-    fun getCategory(): Call<MutableList<Category>>
+    /*@GET("map")
+    fun getCategory(): Call<MutableList<Category>>*/
 
     @GET("map")
     fun getExample(): Call<Example>

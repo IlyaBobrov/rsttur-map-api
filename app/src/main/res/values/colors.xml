@@ -8,22 +8,22 @@
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
 
-    <color name="colorPrimaryNight">        #80009688</color>
-    <color name="colorPrimaryDarkNight">    #8000796B</color>
-    <color name="colorPrimaryLightNight">   #80B2DFDB</color>
-    <color name="colorAccentNight">         #808BC34A</color>
-    <color name="navigationBarColorNight">  #8000796B</color>
+    <color name="colorPrimaryNight">        #FF000000</color>
+    <color name="colorPrimaryDarkNight">    #FF000000</color>
+    <color name="colorPrimaryLightNight">   #FFFFFF</color>
+    <color name="colorAccentNight">         #FF5252</color>
+    <color name="navigationBarColorNight">  #FF000000</color>
 
-    <color name="colorPrimary">      #009688</color>
-    <color name="colorPrimaryDark">  #00796B</color>
-    <color name="colorPrimaryLight">#C5C5C5</color>
+    <color name="colorPrimary">#BCBCBC</color>
+    <color name="colorPrimaryDark">#ACACAC</color>
+    <color name="colorPrimaryLight"> #FFFFFF</color>
     <color name="colorAccent">       #8BC34A</color>
-    <color name="navigationBarColor">#8000796B</color>
+    <color name="navigationBarColor">#ACACAC</color>
 
 
 
     <color name="colorPrimaryText">#212121</color>
-    <color name="colorSecondaryText">#757575</color>
+    <color name="colorSecondaryText">#FFFFFF</color>
     <color name="colorIcons">#212121</color>
     <color name="colorDivider">#BDBDBD</color>
     <color name="colorDanger">#FF5252</color>

@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="text_h1">22sp</dimen>
+    <dimen name="text_p">16sp</dimen>
+    <dimen name="text_action_bar_big">32sp</dimen>
+</resources>

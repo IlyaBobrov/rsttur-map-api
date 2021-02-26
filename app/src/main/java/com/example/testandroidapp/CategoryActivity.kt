@@ -35,9 +35,13 @@ class CategoryActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_category)
 
+        val actionBar = supportActionBar
+        actionBar?.setTitle(R.string.activity_categoies)
+
         recyclerCategoryList = findViewById(R.id.recyclerview_category)
 
         apiInterface = Common2.retrofitServicesCategory
+
         recyclerCategoryList.setHasFixedSize(true)
         layoutManager = LinearLayoutManager(this)
 
@@ -75,9 +79,12 @@ class CategoryActivity : AppCompatActivity() {
                 //~~~end Logs debug~~~*/
 
                 Log.d(TAG, "0.1 to be! objects id 0: ${response.body()?.data?.objects?.get(0)}")
-                Log.d(TAG, "0.2 to be! objects id 0: ${response.body()?.data?.objects?.get(0).hashCode()}")
 
-                Log.d(TAG, "response: ${response}")
+                Log.d(TAG, "6! (size): ${response.body()?.data?.categories?.size}")
+                Log.d(TAG, "6! (size): ${response.body()?.data?.categories}")
+                Log.d(TAG, "6! (size): ${response.body()?.data?.categories?.get(0)}")
+                Log.d(TAG, "6! (size): ${response.body()?.data?.categories?.get(0)?.name}")
+
 
                 myResponse = response.body()
                 val myMutableList: MutableList<Category> =

@@ -11,6 +11,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.testandroidapp.Api.Model.Category
 import com.example.testandroidapp.ObjectsActivity
 import com.example.testandroidapp.R
+import com.makeramen.roundedimageview.RoundedImageView
 
 class MyCategoryAdapter(
     private val context: Context,
@@ -23,7 +24,7 @@ class MyCategoryAdapter(
             myItemView.findViewById<ConstraintLayout>(R.id.item_category)!! //todo: need code review
         val name: TextView = myItemView.findViewById(R.id.txt_name_category)
         val count: TextView = myItemView.findViewById(R.id.txt_count_category)
-        val color: View = myItemView.findViewById(R.id.color_category)
+        var color: RoundedImageView = myItemView.findViewById(R.id.color_category)
 
         fun bindCategory(listItem: Category) {
             item.setOnClickListener { v: View ->
@@ -40,6 +41,8 @@ class MyCategoryAdapter(
     ): MyCategoryAdapter.MyViewHolderCategory {
         val createItemView = LayoutInflater.from(parent.context)
             .inflate(R.layout.item_layout_category, parent, false)
+
+
         return MyViewHolderCategory(createItemView);
     }
 
@@ -47,9 +50,19 @@ class MyCategoryAdapter(
         val listItem = categoryList[position]
         holder.bindCategory(listItem)
         holder.name.text = categoryList.get(position).name
+        holder.color.setBackgroundResource(convertColor(categoryList.get(position).color.toString()))
         holder.count.text = categoryList.get(position).count.toString()
-        //todo: добавить функцию по определению цвета
-        //holder.color.setBackgroundColor(1) //categoryList.get(position).color
+
+    }
+
+    private fun convertColor(color: String?): Int {
+        return when (color) {
+            "warning" -> R.color.warning
+            "success" -> R.color.success
+            "danger" -> R.color.danger
+            "secondary" -> R.color.secondary
+            else -> 0x00000000
+        }
     }
 
     override fun getItemCount(): Int = categoryList.size

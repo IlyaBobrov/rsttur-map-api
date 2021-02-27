@@ -15,14 +15,16 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
-        <ImageView
+        <com.makeramen.roundedimageview.RoundedImageView
             android:id="@+id/image_objects"
             android:layout_width="100dp"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:layout_margin="10dp"
             android:scaleType="fitCenter"
-            tools:srcCompat="@tools:sample/avatars" />
+            app:riv_corner_radius="5dp"
+            app:riv_mutate_background="true"
+            tools:src="@tools:sample/avatars" />
 
         <LinearLayout
             android:layout_width="0dp"
@@ -71,7 +73,7 @@
         android:layout_marginStart="10dp"
         android:layout_marginTop="10dp"
         android:layout_marginEnd="10dp"
-        android:background="@color/colorPrimary"
+        android:background="@drawable/divider_item"
         android:paddingStart="10dp"
         android:paddingEnd="10dp"
         app:layout_constraintBottom_toBottomOf="parent"

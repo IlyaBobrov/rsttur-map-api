@@ -1,20 +1,31 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <color name="colorPrimaryNight">#FF000000</color>
-    <color name="colorPrimaryDarkNight">#FF000000</color>
+    <color name="colorPrimaryDarkNight">#252525</color>
     <color name="colorPrimaryLightNight">#FFFFFF</color>
     <color name="colorAccentNight">#FF5252</color>
     <color name="navigationBarColorNight">#FF000000</color>
+    <color name="windowBackgroundNight">#000000</color>
+    <color name="colorDividerNight">#151515</color>
 
     <color name="colorPrimary">#BCBCBC</color>
     <color name="colorPrimaryDark">#ACACAC</color>
     <color name="colorPrimaryLight">#FFFFFF</color>
     <color name="colorAccent">#8BC34A</color>
     <color name="navigationBarColor">#ACACAC</color>
+    <color name="windowBackground">#FFFFFF</color>
+    <color name="colorDivider">#EFEFEF</color>
 
     <color name="colorPrimaryText">#212121</color>
     <color name="colorSecondaryText">#FFFFFF</color>
     <color name="colorIcons">#212121</color>
-    <color name="colorDivider">#BDBDBD</color>
     <color name="colorDanger">#FF5252</color>
+
+    <color name="black">#000000</color>
+    <color name="white">#ffffff</color>
+
+    <color name="warning">#ffffc107</color>
+    <color name="success">#ff28a745</color>
+    <color name="danger">#ffdc3545</color>
+    <color name="secondary">#ff6c757d</color>
 </resources>

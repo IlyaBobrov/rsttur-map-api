@@ -1,65 +1,71 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+
+
+<androidx.constraintlayout.widget.ConstraintLayout
+
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/item_category"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:layout_marginStart="5dp"
-    android:layout_marginTop="10dp"
-    android:layout_marginEnd="5dp"
-    app:cardElevation="8dp">
+    android:layout_height="50dp">
 
-    <androidx.constraintlayout.widget.ConstraintLayout
-        android:id="@+id/item_category"
+    <TextView
+        android:id="@+id/txt_name_category"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="20dp"
+        android:textSize="@dimen/text_h1"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:text="Категория" />
+
+    <com.makeramen.roundedimageview.RoundedImageView
+        android:id="@+id/color_category"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:layout_marginEnd="32dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:riv_corner_radius="100dp"
+        app:riv_mutate_background="true"
+        app:srcCompat="@drawable/icon_category"
+        tools:background="@color/colorPrimaryDark" />
+
+
+    <TextView
+        android:id="@+id/txt_count_category"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="@color/white"
+        android:textSize="@dimen/text_h2"
+        app:layout_constraintBottom_toBottomOf="@+id/color_category"
+        app:layout_constraintEnd_toEndOf="@+id/color_category"
+        app:layout_constraintStart_toStartOf="@+id/color_category"
+        app:layout_constraintTop_toTopOf="@+id/color_category"
+        tools:text="5" />
+
+    <View
+        android:id="@+id/arrow_category"
+        android:layout_width="15dp"
+        android:layout_height="15dp"
+        android:background="@drawable/ic_baseline_arrow_forward_ios_24"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/color_category"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <View
+        android:id="@+id/bottom_line"
         android:layout_width="match_parent"
-        android:layout_height="60dp">
+        android:layout_height="1dp"
+        android:background="@drawable/divider_item"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
 
 
-        <TextView
-            android:id="@+id/txt_name_category"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="40dp"
-            android:textSize="@dimen/text_p"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            tools:text="Категория" />
-
-        <TextView
-            android:id="@+id/txt_count_category"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="@+id/color_category"
-            app:layout_constraintStart_toStartOf="@+id/color_category"
-            app:layout_constraintTop_toTopOf="parent"
-            tools:text="5" />
-
-        <View
-            android:id="@+id/color_category"
-            android:layout_width="25dp"
-            android:layout_height="25dp"
-            android:layout_marginEnd="40dp"
-            android:background="@drawable/icon_category"
-            android:textSize="@dimen/text_p"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:srcCompat="@drawable/icon_category" />
-
-
-        <View
-            android:id="@+id/arrow_category"
-            android:layout_width="15dp"
-            android:layout_height="15dp"
-            android:background="@drawable/ic_baseline_arrow_forward_ios_24"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toEndOf="@+id/color_category"
-            app:layout_constraintTop_toTopOf="parent" />
-
-    </androidx.constraintlayout.widget.ConstraintLayout>
-
-
-</androidx.cardview.widget.CardView>

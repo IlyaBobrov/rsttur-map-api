@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">TestAndroidApp</string>
+    <string name="app_name">AndroidApp</string>
     <string name="loading">Loading...</string>
     <string name="activity_objects">Объекты</string>
     <string name="activity_categoies">Категории</string>

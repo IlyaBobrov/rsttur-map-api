@@ -28,12 +28,18 @@ class CategoryActivity : AppCompatActivity() {
     private lateinit var recyclerCategoryList: RecyclerView
     var myResponse: Example? = null
 
+    lateinit var toolbar: androidx.appcompat.widget.Toolbar
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_category)
 
         val actionBar = supportActionBar
         actionBar?.setTitle(R.string.activity_categoies)
+
+        /*actionBar?.setDisplayHomeAsUpEnabled(false)
+
+        toolbar = findViewById(R.id.toolbar_category)
+        toolbar.setTitle(R.string.activity_categoies)*/
 
         recyclerCategoryList = findViewById(R.id.recyclerview_category)
         apiInterface = Common.retrofitServicesCategory

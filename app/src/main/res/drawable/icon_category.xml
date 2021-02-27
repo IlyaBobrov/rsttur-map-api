@@ -3,8 +3,6 @@
     android:shape="ring">
     <size
         android:width="50dp"
-        android:height="50dp"
-        />
-    <solid
-        android:color="@color/colorAccent"/>
+        android:height="50dp" />
+    <solid android:color="@color/colorAccent" />
 </shape>

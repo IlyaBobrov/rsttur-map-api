@@ -10,7 +10,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.testandroidapp.Adapter.MyObjectAdapter
-import com.example.testandroidapp.Api.Common.Common2
+import com.example.testandroidapp.Api.Common.Common
 import com.example.testandroidapp.Api.Interface.RetrofitInterface
 import com.example.testandroidapp.Api.Model.Example
 import com.example.testandroidapp.Api.Model.Object
@@ -36,13 +36,7 @@ class ObjectsActivity : AppCompatActivity() {
         actionBar?.setDisplayHomeAsUpEnabled(true)
         actionBar?.setTitle(R.string.activity_objects)
 
-
-
-        ////todo: получить объект -> избавиться от запроса
-        api = Common2.retrofitServicesCategory
-
-//        Log.d(TAG,"***${Example.instance}")
-//        Log.d(TAG,"***************** ")
+        api = Common.retrofitServicesCategory
 
         recyclerObjectsList = findViewById(R.id.recyclerview_objects)
         recyclerObjectsList.setHasFixedSize(true)
@@ -51,12 +45,7 @@ class ObjectsActivity : AppCompatActivity() {
 
         val i = intent
         typeExtra = i.getStringExtra("TYPE")!!
-        //var myExample = i.getParcelableExtra("RESPONSE")
-
-        //todo: need tests
-
-        api.getExample()
-
+        //api.getExample()
         getExample();
     }
 
@@ -66,16 +55,9 @@ class ObjectsActivity : AppCompatActivity() {
         api.getExample().enqueue(object : Callback<Example> {
 
             override fun onResponse(call: Call<Example>, response: Response<Example>) {
-
                 var myResponse = response.body()
                 val myMutableList: MutableList<Object> =
                     response.body()?.data?.objects as MutableList<Object>
-
-                Log.d(TAG, "1 response (size): ${response.body()?.data?.objects?.size}")
-                Log.d(TAG, "4.0 response: ${response.body()?.data?.categories}")
-
-                Log.d(TAG, "myMutableList (icon object 0): ${myMutableList[0].image}")
-
 
                 adapter = MyObjectAdapter(this@ObjectsActivity,
                     myMutableList.filter { it.type == typeExtra } as MutableList<Object>)

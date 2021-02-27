@@ -1,18 +1,6 @@
 <resources xmlns:tools="http://schemas.android.com/tools">
     <!-- Base application theme. -->
-    <style name="Theme.TestAndroidApp" parent="Theme.MaterialComponents.DayNight">
-        <!-- Primary brand color. -->
-        <item name="colorPrimary">@color/white</item>
-        <item name="colorPrimaryVariant">@android:color/holo_orange_light</item>
-        <item name="colorOnPrimary">@color/black</item>
-        <!-- Secondary brand color. -->
-        <item name="colorSecondary">@android:color/holo_green_light</item>
-        <item name="colorSecondaryVariant">@android:color/holo_green_dark</item>
-        <item name="colorOnSecondary">@color/black</item>
-        <!-- Status bar color. -->
-        <item name="android:statusBarColor" tools:targetApi="l">@color/black</item>
-        <!-- Customize your theme here. -->
-    </style>
+    <style name="Theme.TestAndroidApp" parent="Theme.MaterialComponents.DayNight"></style>
 
     <style name="Theme.ProductCalc" parent="Theme.AppCompat.DayNight.DarkActionBar">
 
@@ -37,8 +25,7 @@
     </style>
 
     <!-- ActionBar styles -->
-    <style name="MyActionBar"
-        parent="@android:style/Widget.Holo.Light.ActionBar.Solid.Inverse">
+    <style name="MyActionBar" parent="@android:style/Widget.Holo.Light.ActionBar.Solid.Inverse">
         <item name="android:titleTextStyle">@style/titleStyle</item>
     </style>
     <!-- ActionBar title styles -->

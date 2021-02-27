@@ -8,7 +8,7 @@ import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.example.testandroidapp.Adapter.MyCategoryAdapter
+import com.example.testandroidapp.Adapter.CategoryAdapter
 import com.example.testandroidapp.Api.Common.Common
 import com.example.testandroidapp.Api.Interface.RetrofitInterface
 import com.example.testandroidapp.Api.Model.Category
@@ -23,12 +23,11 @@ class CategoryActivity : AppCompatActivity() {
     private val TAG: String = "TAG"
     lateinit var apiInterface: RetrofitInterface
     lateinit var layoutManager: LinearLayoutManager
-    lateinit var adapter: MyCategoryAdapter
+    lateinit var adapter: CategoryAdapter
     lateinit var dialog: Dialog
     private lateinit var recyclerCategoryList: RecyclerView
-    var myResponse: Example? = null
 
-    lateinit var toolbar: androidx.appcompat.widget.Toolbar
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_category)
@@ -37,12 +36,12 @@ class CategoryActivity : AppCompatActivity() {
         actionBar?.setTitle(R.string.activity_categoies)
 
         /*actionBar?.setDisplayHomeAsUpEnabled(false)
-
         toolbar = findViewById(R.id.toolbar_category)
         toolbar.setTitle(R.string.activity_categoies)*/
 
-        recyclerCategoryList = findViewById(R.id.recyclerview_category)
         apiInterface = Common.retrofitServicesCategory
+
+        recyclerCategoryList = findViewById(R.id.recyclerview_category)
         recyclerCategoryList.setHasFixedSize(true)
         layoutManager = LinearLayoutManager(this)
         recyclerCategoryList.layoutManager = layoutManager
@@ -50,17 +49,15 @@ class CategoryActivity : AppCompatActivity() {
         getExample()
     }
 
+
     private fun getExample() {
         dialog = ProgressDialog.show(this, "", "Loading...", true)
 
         apiInterface.getExample().enqueue(object : Callback<Example> {
 
             override fun onResponse(call: Call<Example>, response: Response<Example>) {
-                myResponse = response.body()
-                val myMutableList: MutableList<Category> =
-                    myResponse?.data?.categories as MutableList<Category>
-
-                adapter = MyCategoryAdapter(baseContext, myMutableList)
+                val myMutableList = response.body()?.data?.categories as MutableList<Category>
+                adapter = CategoryAdapter(baseContext, myMutableList)
                 adapter.notifyDataSetChanged()
                 recyclerCategoryList.adapter = adapter
 

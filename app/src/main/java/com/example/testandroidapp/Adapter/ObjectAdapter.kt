@@ -1,19 +1,12 @@
 package com.example.testandroidapp.Adapter
 
-import android.R.attr.bitmap
-import android.R.attr.radius
 import android.content.Context
 import android.content.Intent
 import android.content.Intent.ACTION_VIEW
-import android.graphics.BitmapShader
-import android.graphics.Paint
-import android.graphics.RectF
-import android.graphics.Shader
 import android.net.Uri
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.ImageView
 import android.widget.TextView
 import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.recyclerview.widget.RecyclerView
@@ -23,8 +16,8 @@ import com.makeramen.roundedimageview.RoundedImageView
 import com.squareup.picasso.Picasso
 
 
-class MyObjectAdapter(private val context: Context, private val objectList: MutableList<Object>) :
-    RecyclerView.Adapter<MyObjectAdapter.MyViewHolderObjects>() {
+class ObjectAdapter(private val context: Context, private val objectList: MutableList<Object>) :
+    RecyclerView.Adapter<ObjectAdapter.MyViewHolderObjects>() {
 
     class MyViewHolderObjects(myItemView: View) : RecyclerView.ViewHolder(myItemView) {
         var item: ConstraintLayout = myItemView.findViewById(R.id.item_objects)
@@ -48,14 +41,14 @@ class MyObjectAdapter(private val context: Context, private val objectList: Muta
     override fun onCreateViewHolder(
         parent: ViewGroup,
         viewType: Int
-    ): MyObjectAdapter.MyViewHolderObjects {
+    ): ObjectAdapter.MyViewHolderObjects {
         val createItemView =
             LayoutInflater.from(parent.context).inflate(R.layout.item_layout_objects, parent, false)
         return MyViewHolderObjects(createItemView)
 
     }
 
-    override fun onBindViewHolder(holder: MyObjectAdapter.MyViewHolderObjects, position: Int) {
+    override fun onBindViewHolder(holder: ObjectAdapter.MyViewHolderObjects, position: Int) {
         val listItem = objectList[position]
         holder.bindObjects(listItem)
 

@@ -12,7 +12,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.Toolbar
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.example.testandroidapp.Adapter.MyObjectAdapter
+import com.example.testandroidapp.Adapter.ObjectAdapter
 import com.example.testandroidapp.Api.Common.Common
 import com.example.testandroidapp.Api.Interface.RetrofitInterface
 import com.example.testandroidapp.Api.Model.Example
@@ -27,10 +27,9 @@ class ObjectsActivity : AppCompatActivity() {
     lateinit var api: RetrofitInterface
     lateinit var layoutManager: LinearLayoutManager
     lateinit var dialog: Dialog
-    lateinit var adapter: MyObjectAdapter
+    lateinit var adapter: ObjectAdapter
     private lateinit var recyclerObjectsList: RecyclerView
     private var typeExtra: Any? = null
-
     lateinit var toolbar: Toolbar
     lateinit var collapsingToolbar: CollapsingToolbarLayout
 
@@ -40,19 +39,14 @@ class ObjectsActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_objects)
 
-
         val actionBar = supportActionBar
         actionBar?.setHomeButtonEnabled(true)
         actionBar?.setDisplayHomeAsUpEnabled(true)
         actionBar?.setTitle(R.string.activity_objects)
 
-
-
         /*toolbar = findViewById(R.id.toolbar_objects)
         setSupportActionBar(this.toolbar)
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
-
-
         collapsingToolbar = findViewById(R.id.collapse_toolbar_object)
         collapsingToolbar.title = getString(R.string.activity_objects)*/
 
@@ -63,10 +57,9 @@ class ObjectsActivity : AppCompatActivity() {
         layoutManager = LinearLayoutManager(this)
         recyclerObjectsList.layoutManager = layoutManager
 
-        val i = intent
-        typeExtra = i.getStringExtra("TYPE")!!
-        //api.getExample()
-        getExample();
+        typeExtra = intent.getStringExtra("TYPE")!!
+
+        getExample()
     }
 
     private fun getExample() {
@@ -75,14 +68,13 @@ class ObjectsActivity : AppCompatActivity() {
         api.getExample().enqueue(object : Callback<Example> {
 
             override fun onResponse(call: Call<Example>, response: Response<Example>) {
-                var myResponse = response.body()
-                val myMutableList: MutableList<Object> =
-                    response.body()?.data?.objects as MutableList<Object>
+                val myMutableList = response.body()?.data?.objects as MutableList<Object>
 
-                adapter = MyObjectAdapter(this@ObjectsActivity,
+                adapter = ObjectAdapter(this@ObjectsActivity,
                     myMutableList.filter { it.type == typeExtra } as MutableList<Object>)
                 adapter.notifyDataSetChanged()
                 recyclerObjectsList.adapter = adapter
+
                 dialog.dismiss()
             }
 

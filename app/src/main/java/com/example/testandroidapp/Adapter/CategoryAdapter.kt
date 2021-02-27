@@ -13,11 +13,11 @@ import com.example.testandroidapp.ObjectsActivity
 import com.example.testandroidapp.R
 import com.makeramen.roundedimageview.RoundedImageView
 
-class MyCategoryAdapter(
+class CategoryAdapter(
     private val context: Context,
     private val categoryList: MutableList<Category>,
 ) :
-    RecyclerView.Adapter<MyCategoryAdapter.MyViewHolderCategory>() {
+    RecyclerView.Adapter<CategoryAdapter.MyViewHolderCategory>() {
 
     class MyViewHolderCategory(myItemView: View) : RecyclerView.ViewHolder(myItemView) {
         val item =
@@ -29,7 +29,7 @@ class MyCategoryAdapter(
         fun bindCategory(listItem: Category) {
             item.setOnClickListener { v: View ->
                 val intent: Intent = Intent(v.context, ObjectsActivity::class.java)
-                intent.putExtra("TYPE", "${listItem.type}")
+                intent.putExtra("TYPE", listItem.type)
                 v.context.startActivity(intent)
             }
         }
@@ -38,7 +38,7 @@ class MyCategoryAdapter(
     override fun onCreateViewHolder(
         parent: ViewGroup,
         viewType: Int
-    ): MyCategoryAdapter.MyViewHolderCategory {
+    ): CategoryAdapter.MyViewHolderCategory {
         val createItemView = LayoutInflater.from(parent.context)
             .inflate(R.layout.item_layout_category, parent, false)
 
